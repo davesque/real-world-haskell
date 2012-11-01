@@ -39,5 +39,5 @@ secondToLast (x:y:ys)
 -- Haskell is special in that all functions in the language are pure by
 -- default.  This means that they MUST produce the same output for a given set
 -- of inputs.  They CANNOT perform IO or any action with side-effects unless
--- that is explicitly specified.
+-- that is explicitly stated.
 ------------------------------------------------------------------------------
