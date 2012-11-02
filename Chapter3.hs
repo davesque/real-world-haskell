@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------
--- Type constructors are purely for code readability:
+-- Type aliases are purely for code readability:
 type ShorterName = (Float, Int, Float, Int)
 
 ------------------------------------------------------------------------------
@@ -31,3 +31,14 @@ myTest (MyJust (Just x)) = x
 -- constructor.  It must take concrete types as arguments before it can become
 -- a concrete type itself.
 --------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- The `error` function causes a program to terminate immediately with a
+-- specific error message.  It has a type of `String -> a` and so it can
+-- satisfy any type requirement when applied to a String.
+alwaysFail :: a
+alwaysFail = error "error message"
+
+-- Try it!
+main :: IO ()
+main = alwaysFail
