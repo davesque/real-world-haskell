@@ -1,4 +1,3 @@
-import Data.Ratio ((%))
 ------------------------------------------------------------------------------
 -- Type aliases are purely for code readability:
 type ShorterName = (Float, Int, Float, Int)
@@ -51,7 +50,10 @@ length' (_:xs) = 1 + length' xs
 length'' :: [a] -> Int
 length'' = foldr (\_ a -> 1 + a) 0
 
-mean :: (Num a) => [a] -> Float
-mean xs = fromRational $ sumXs % lenXs
-    where sumXs = fromIntegral $ sum xs
-          lenXs = fromIntegral $ length xs
+mean :: (Real a, Fractional b) => [a] -> b
+mean xs = sumXs / lenXs
+    where sumXs = realToFrac $ sum xs
+          lenXs = realToFrac $ length xs
+
+palindrome :: [a] -> [a]
+palindrome = foldr (\i a -> i:a) []
