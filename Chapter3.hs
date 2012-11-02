@@ -1,3 +1,6 @@
+import Data.List (sortBy)
+import Data.Function (on)
+
 ------------------------------------------------------------------------------
 -- Type aliases are purely for code readability:
 type ShorterName = (Float, Int, Float, Int)
@@ -56,4 +59,10 @@ mean xs = sumXs / lenXs
           lenXs = realToFrac $ length xs
 
 palindrome :: [a] -> [a]
-palindrome = foldr (\i a -> i:a) []
+palindrome xs = foldr (:) (reverse xs) xs
+
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = xs == reverse xs
+
+sortByLength :: [[a]] -> [[a]]
+sortByLength = sortBy (compare `on` length)
