@@ -1,3 +1,4 @@
+import Data.Ratio ((%))
 ------------------------------------------------------------------------------
 -- Type aliases are purely for code readability:
 type ShorterName = (Float, Int, Float, Int)
@@ -42,3 +43,15 @@ alwaysFail = error "error message"
 -- Try it!
 main :: IO ()
 main = alwaysFail
+
+length' :: [a] -> Int
+length' [] = 0
+length' (_:xs) = 1 + length' xs
+
+length'' :: [a] -> Int
+length'' = foldr (\_ a -> 1 + a) 0
+
+mean :: (Num a) => [a] -> Float
+mean xs = fromRational $ sumXs % lenXs
+    where sumXs = fromIntegral $ sum xs
+          lenXs = fromIntegral $ length xs
